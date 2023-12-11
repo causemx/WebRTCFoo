@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- tools:ignore is needed because lint thinks this can be replaced with a merge. Replacing this
+     with a merge causes the fullscreen SurfaceView not to be centered. -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MergeRootFrame">
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/fullscreen_video_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+<!--    <org.webrtc.SurfaceViewRenderer-->
+<!--        android:id="@+id/fullscreen_video_view"-->
+<!--        android:layout_width="144dp"-->
+<!--        android:layout_height="144dp"-->
+<!--        android:layout_gravity="left|center_vertical"-->
+<!--        android:visibility="visible"/>-->
+    <FrameLayout
+        android:id="@+id/record_fullscreen_view_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/record_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="三維取像拍攝中"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="200px"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/yaw"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:text="0"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:visibility="visible" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/pitch"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:text="0"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:visibility="visible" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/roll"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:text="0"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:visibility="visible" />-->
+
+
+<!--            </LinearLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/mavlinkMsg"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:visibility="visible" />-->
+            <TextView
+                android:id="@+id/mavlinkDigiCamMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="digicamCtrl"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#ffff00"
+                android:visibility="invisible" />
+            <TextView
+                android:id="@+id/gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#ffff00"
+                android:visibility="visible" />
+<!--            <TextView-->
+<!--                android:id="@+id/mavlinkCameraFeedbackMsg"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="digiCamCtrl"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                android:textColor="#FFFFFF"-->
+<!--                android:visibility="visible" />-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardview_dark_background"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <ImageButton
+                    android:id="@+id/btn_switch_mode"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:background="#00000000"
+                    android:contentDescription="切換模式"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_05click" />
+
+                <ImageButton
+                    android:id="@+id/btn_call_disconnect"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left"
+                    android:background="#00000000"
+                    android:contentDescription="@string/disconnect_call"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_08" />
+            </androidx.appcompat.widget.Toolbar>
+                <!--        <LinearLayout-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="match_parent"-->
+                <!--            android:gravity="center"-->
+                <!--            android:orientation="horizontal">-->
+                <!--            <ImageButton-->
+                <!--                android:id="@+id/btn_takepicture"-->
+                <!--                android:layout_width="48dp"-->
+                <!--                android:layout_height="48dp"-->
+                <!--                android:layout_marginEnd="8dp"-->
+                <!--                android:background="@android:drawable/ic_menu_camera"-->
+                <!--                android:contentDescription="@string/switch_camera" />-->
+                <!--            <Button-->
+                <!--                android:id="@+id/btn_flash"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="閃光燈" />-->
+
+                <!--            <Button-->
+                <!--                android:id="@+id/btn_videoRecord"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="錄影" />-->
+
+                <!--            <Button-->
+                <!--                android:id="@+id/btn_auto_takepicture_start"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="自動" />-->
+
+                <!--            <Button-->
+                <!--                android:id="@+id/btn_auto_takepicture_stop"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="停止" />-->
+                <!--        </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/et_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/camera_view_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/container_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"></FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/container_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"></FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/container_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"></FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scroll_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_context"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_margin="5dp"
+                        android:textColor="@android:color/white" />
+                </androidx.core.widget.NestedScrollView>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/LogcatView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_margin="5dp"
+                        android:textColor="@android:color/white" />
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/cardview_dark_background"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme">
+
+            <ImageButton
+                android:id="@+id/btn_takepicture"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:background="#00000000"
+                android:contentDescription="單張拍照"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_04" />
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_auto_takepicture"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:background="#00000000"-->
+<!--                android:contentDescription="自動拍照"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/icon_01" />-->
+
+            <ImageButton
+                android:id="@+id/btn_videoRecord"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:contentDescription="錄影"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_07"
+                android:visibility="gone" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </FrameLayout>
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/pip_video_view"
+        android:layout_height="144dp"
+        android:layout_width="144dp"
+        android:layout_gravity="center|end"
+        android:layout_margin="16dp"
+        android:visibility="invisible"/>
+
+    <FrameLayout
+        android:id="@+id/call_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <FrameLayout
+            android:id="@+id/hud_fragment_container"
+            android:layout_width="389dp"
+            android:layout_height="709dp" />
+    </FrameLayout>
+    <RelativeLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        />
+
+</FrameLayout>

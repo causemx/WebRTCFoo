@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path path="Android/data/org.itri.apprtc/" name="files_root" />
+    <external-path path="./webrtcPhotos" name="external_storage_root" />
+</paths>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<!--</PreferenceScreen>-->

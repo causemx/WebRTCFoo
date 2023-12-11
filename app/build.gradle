@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "30.0.2"
+    defaultConfig {
+        applicationId "org.itri.threedimensionviewfinder"
+        minSdkVersion 28
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        ndk {
+            abiFilters "arm64-v8a", "armeabi-v7a"
+        }
+
+        setProperty("archivesBaseName", "${archivesBaseName}_${versionName}")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    flavorDimensions "appdef"
+    productFlavors {
+        control {
+            dimension "appdef"
+            applicationIdSuffix ".control"
+            versionNameSuffix "-control"
+        }
+        record {
+            dimension "appdef"
+            applicationIdSuffix ".record"
+            versionNameSuffix "-record"
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile "src/main/AndroidManifest.xml"
+            java.srcDirs = [
+                    "src/main/src"
+            ]
+            res.srcDirs = [
+                    "src/main/res"
+            ]
+        }
+        androidTest {
+            manifest.srcFile "src/androidTest/AndroidManifest.xml"
+            java.srcDirs = [
+                    "src/androidTest/src"
+            ]
+            // This test doesn't work in Android Studio.
+            java.exclude('**/CallActivityStubbedInputOutputTest.java')
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'src/main/third_party/autobanh/lib', include: ['autobanh.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'org.webrtc:google-webrtc: 1.0.+'
+    implementation "androidx.exifinterface:exifinterface:1.3.2"
+    implementation project(path: ':Imufinder')
+    implementation project(path: ':usbTerminal')
+    recordImplementation project(path: ':VStreamer_1.0-release')
+    controlCompileOnly project(path: ':VStreamer_1.0-release')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation project(path: ':Viewfinder')
+    implementation project(path: ':videoRecord')
+    implementation 'com.android.volley:volley:1.2.0'
+    implementation 'com.google.code.gson:gson:2.3.1'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.github.mik3y:usb-serial-for-android:3.3.0' // maven jitpack
+
+}

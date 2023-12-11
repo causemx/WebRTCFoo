@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:layout_centerHorizontal="true">
+
+<!--    <TextView-->
+<!--        android:id="@+id/room_edittext_description"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/room_description"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- TODO(crbug.com/900912): Fix and remove lint ignore -->
+        <TextView
+            android:id="@+id/room_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/room_id"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="163dp" />
+
+        <EditText
+            android:id="@+id/room_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="LabelFor,Autofill" />
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/connect_button"-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:contentDescription="@string/connect_description"-->
+        <!--            android:background="@android:drawable/sym_action_call" />-->
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/add_favorite_button"-->
+        <!--            android:layout_width="48dp"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:contentDescription="@string/add_favorite_description"-->
+        <!--            android:background="@android:drawable/ic_input_add" />-->
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Delay秒數：" />-->
+<!--        <EditText-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="1"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_delay"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="秒" />-->
+<!--    </LinearLayout>-->
+    <LinearLayout
+        android:id="@+id/ll_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手持/無人機：" />
+        <RadioGroup
+            android:id="@+id/mRadioGroup1"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <RadioButton
+                android:id="@+id/radio_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="手持"/>
+            <RadioButton
+                android:id="@+id/radio_drone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="無人機"
+                android:checked="true"/>
+        </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="(1:手持, 2:無人機)" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_takepicture_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拍照模式：" />
+        <RadioGroup
+            android:id="@+id/mRadioGroup"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <RadioButton
+                android:id="@+id/radio_manual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="手動拍照"/>
+            <RadioButton
+                android:id="@+id/radio_auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="自動拍照"
+                android:checked="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="(1:手動, 2:自動)" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_ground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地面高度：" />
+        <EditText
+            android:id="@+id/et_ground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="117"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_project_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center|left"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="選擇專案："
+            />
+        <Spinner
+            android:id="@+id/spinner_project_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="usb device: "/>
+        <Spinner
+            android:id="@+id/spinner_usb_terminal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/connect_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next" />
+    <CheckBox
+        android:id="@+id/cb_new_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="建立專案" />
+    <LinearLayout
+        android:id="@+id/ll_new_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="專案名稱："/>
+        <EditText
+            android:id="@+id/et_new_project"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8" />
+        <Button
+            android:id="@+id/btn_new_project"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="新增"
+            style="@style/Widget.AppCompat.Button.Small"/>
+    </LinearLayout>
+</LinearLayout>

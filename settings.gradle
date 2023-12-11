@@ -1,0 +1,6 @@
+include ':usbTerminal'
+include ':Imufinder'
+include ':VStreamer_1.0-release'
+include ':app', 'Viewfinder', ':videoRecord'
+project(':Viewfinder').projectDir = new File(rootDir, './DepthViewfinder/Viewfinder')
+project(':videoRecord').projectDir = new File(rootDir, './videoRecord')
